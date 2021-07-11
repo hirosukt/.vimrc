@@ -18,6 +18,7 @@ set expandtab
 set shiftwidth=2
 set smartindent
 set mouse=a
+set clipboard+=unnamed
 
 " 検索
 set ignorecase
