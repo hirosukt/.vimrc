@@ -11,6 +11,7 @@ set guioptions+=a
 set guioptions+=R
 set termwinsize=10x0
 syntax on
+colorscheme jellybeans
 
 " 操作
 set backspace=indent,eol,start
