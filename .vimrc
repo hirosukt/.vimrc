@@ -12,6 +12,10 @@ set guioptions+=R
 set termwinsize=15x0
 syntax on
 colors wombat
+let g:airline_theme='wombat'
+let g:airline_powerline_fonts = 1
+let g:airline#extensions#branch#enabled = 0
+let g:airline#extensions#tabline#enabled = 1
 set t_Co=256
 set termguicolors 
 
@@ -53,9 +57,6 @@ set noswapfile
 set belloff=all
 set history=10000
 
-" キーバインド
-nnoremap s <INSERT>
-
 " プラグイン
 call plug#begin()
 
@@ -64,18 +65,20 @@ Plug 'Shougo/unite.vim'
 Plug 'Shougo/neomru.vim'
 Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-surround'
+Plug 'vim-airline/vim-airline'
+Plug 'vim-airline/vim-airline-themes'
 Plug 'airblade/vim-gitgutter'
 Plug 'junegunn/vim-easy-align'
 Plug 'shime/vim-livedown'
+Plug 'neoclide/coc.nvim', {'branch': 'release'}
 
 call plug#end()
 
 autocmd VimEnter * if &filetype !=# 'gitcommit' | NERDTree | wincmd p | endif
 
 autocmd WinEnter * call s:CloseIfOnlyNerdTreeLeft()
+let g:indent_guides_enable_on_vim_startup = 1
 
-" Close all open buffers on entering a window if the only
-" buffer that's left is the NERDTree buffer
 function! s:CloseIfOnlyNerdTreeLeft()
   if exists("t:NERDTreeBufName")
     if bufwinnr(t:NERDTreeBufName) != -1
