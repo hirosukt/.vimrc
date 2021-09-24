@@ -1,4 +1,5 @@
 " 見た目
+set nocompatible
 set number
 set wildmenu
 set showmatch
@@ -7,9 +8,8 @@ set laststatus=2
 set showcmd
 set display=lastline
 set tabstop=2
-set guioptions+=a
-set guioptions+=R
-set termwinsize=15x0
+set termwinsize=12x0
+set nowrap
 syntax on
 colors wombat
 let g:airline_theme='wombat'
@@ -17,16 +17,23 @@ let g:airline_powerline_fonts = 1
 let g:airline#extensions#branch#enabled = 0
 let g:airline#extensions#tabline#enabled = 1
 set t_Co=256
-set termguicolors 
+set termguicolors
 
 " 操作
 set backspace=indent,eol,start
-set expandtab
-set shiftwidth=2
-set smartindent
 set mouse=a
+set ttymouse=xterm2
 set clipboard+=unnamed
 set completeopt=menuone,noinsert
+set scrolloff=2
+set expandtab
+set tabstop=4
+set shiftwidth=4
+set softtabstop=2
+set autoindent
+set smartindent
+set whichwrap=b,s,<,>,[,]
+set virtualedit=onemore
 inoremap <expr><CR>  pumvisible() ? "<C-y>" : "<CR>"
 inoremap <expr><C-n> pumvisible() ? "<Down>" : "<C-n>"
 inoremap <expr><C-p> pumvisible() ? "<Up>" : "<C-p>"
@@ -56,6 +63,7 @@ set nobackup
 set noswapfile
 set belloff=all
 set history=10000
+autocmd BufWritePre * :%s/\s\+$//ge
 
 " プラグイン
 call plug#begin()
